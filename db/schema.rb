@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_17_170419) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_17_174643) do
   create_table "lances", force: :cascade do |t|
     t.string "email"
     t.string "password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string "email"
+    t.string "name"
+    t.bigint "lance_id"
+    t.string "self_infomation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

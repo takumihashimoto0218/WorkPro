@@ -5,6 +5,7 @@ class CreateProfiles < ActiveRecord::Migration[7.0]
       t.string :name
       t.bigint :lance_id
       t.string :self_infomation
+      t.string :profile_image
 
       t.timestamps
     end

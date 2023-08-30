@@ -52,6 +52,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_30_172606) do
     t.bigint "lance_id"
     t.string "self_infomation"
     t.string "profile_image"
+    t.bigint "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

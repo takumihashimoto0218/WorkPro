@@ -30,7 +30,7 @@ class Api::V1::ProfilesController < ApplicationController
   end
 
   def profile_params
-    params.require(:profile).permit(:name, :email, :lance_id, :self_infomation, :image)
+    params.require(:profile).permit(:name, :email, :lance_id, :self_infomation, :image, :tag_id)
   end
 
   def set_tag

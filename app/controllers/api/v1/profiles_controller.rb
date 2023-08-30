@@ -1,5 +1,6 @@
 class Api::V1::ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :update]
+  before_action :set_tag, only: [:create]
 
   def show
     render json: @profile, methods: [:image_url]
@@ -30,6 +31,10 @@ class Api::V1::ProfilesController < ApplicationController
 
   def profile_params
     params.require(:profile).permit(:name, :email, :lance_id, :self_infomation, :image)
+  end
+
+  def set_tag
+    @tags = Tag.all
   end
 end
 

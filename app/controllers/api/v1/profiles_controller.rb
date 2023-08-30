@@ -1,29 +1,40 @@
 class Api::V1::ProfilesController < ApplicationController
+  before_action :set_profile, only: [:show, :update]
+  before_action :set_tag, only: [:create]
+
   def show
-    @profile = Profile.find(params[:id])
-    render json: @profile
+    render json: @profile, methods: [:image_url]
   end
 
   def create
     @profile = Profile.new(profile_params)
     if @profile.save
-      render json: @profile, status: :created
+      render json: @profile,methods: [:image_url], status: :created
     else
       render json: @profile.errors, status: :unprocessable_entity
-    end  
+    end
   end
 
   def update
-    @profile = Profile.find(params[:id])
     if @profile.update(profile_params)
-      render json: @profile, status: :created
+      render json: @profile
     else
       render json: @profile.errors, status: :unprocessable_entity
-    end  
+    end
   end
 
   private
-    def profile_params
-      params.require(:profile).permit(:name, :email, :lance_id, :self_infomation)
-    end
+
+  def set_profile
+    @profile = Profile.find(params[:id])
+  end
+
+  def profile_params
+    params.require(:profile).permit(:name, :email, :lance_id, :self_infomation, :image)
+  end
+
+  def set_tag
+    @tags = Tag.all
+  end
 end
+
